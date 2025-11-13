@@ -4,12 +4,12 @@ import "./index.css";
 
 export default function App() {
   return (
-    <div className="flex bg-indigo-950 text-gray-400">
-      <aside className="w-2/5">
+    <div className="font-inter bg-indigo-950 text-gray-400 flex flex-col md:flex-row">
+      <aside className="w-full w-2/5">
         <Sidebar/>
       </aside>
 
-      <main className="w-3/5">
+      <main className="w-full w-3/5">
         
       </main>
 
