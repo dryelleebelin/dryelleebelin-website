@@ -35,11 +35,6 @@ npm run dev
 
 ## 💡 Sobre o projeto
 
-O portfólio foi projetado para ser moderno, responsivo e minimalista, destacando minha trajetória profissional e projetos desenvolvidos.
-O foco está em uma boa experiência do usuário, transições suaves e código limpo.
+O portfólio foi projetado para ser moderno, responsivo e minimalista, destacando minha trajetória profissional e projetos desenvolvidos. O foco está em uma boa experiência do usuário, transições suaves e código limpo.
 
-## 📬 Contato
-
-- E-mail: dryellesilva07@gmail.com
-- LinkedIn: https://www.linkedin.com/in/dryelleebelin
-- Portfólio online: (em breve)
+🌐 O site está publicado online com **deploy automático configurado via Vercel**: [Acesse aqui](https://dryelleebelin.vercel.app)
