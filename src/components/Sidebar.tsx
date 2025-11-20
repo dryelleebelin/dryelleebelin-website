@@ -7,9 +7,9 @@ export default function Sidebar() {
         <p>Transformo ideias em interfaces modernas, intuitivas e de alta performance.</p>
       </div>
 
-      <nav className="flex flex-col gap-3 hidden md:flex">
+      <nav className="flex flex-col gap-3 hidden md:flex text-sm font-semibold">
         <a>SOBRE</a>
-        <a>EXPERIÊNCIA</a>
+        <a>EXPERIÊNCIAS</a>
         <a>PROJETOS</a>
       </nav>
 
