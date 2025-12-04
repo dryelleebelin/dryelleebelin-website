@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Router } from "express";
 import { Resend } from "resend";
-import { contactEmailTemplate } from "../templates/contactEmail.ts";
+import { contactEmailTemplate } from "../templates/contactEmail";
 import type { ContactData } from "../types/contact.ts";
 
 const router = Router();
