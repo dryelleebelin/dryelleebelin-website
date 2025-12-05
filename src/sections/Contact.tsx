@@ -23,7 +23,7 @@ export default function Contact() {
     }
 
     if(!isValidEmail(email)){
-      toast.warning("Digite um e-mai válido.");
+      toast.warning("Digite um e-mail válido.");
       return;
     }
 
