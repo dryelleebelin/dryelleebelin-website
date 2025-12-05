@@ -1,3 +1,7 @@
+<div align="center">
+  <img alt="Logo" src="https://dryelleebelin.vercel.app/favicon.png" width="100" />
+</div>
+
 <h1 align="center">
   Portfólio - Dryelle Ebelin
 </h1>
@@ -10,12 +14,12 @@
 
 ## 🚀 Tecnologias
 - React + Vite  
-- Tailwind CSS  
-- JavaScript / TypeScript  
-- Framer Motion  
+- Tailwind CSS / Lucide React
+- JavaScript / TypeScript
+- Node.js / Express / Axios / Resend
 - Git & GitHub
-- EmailJS 
-- Figma
+- Vercel / Render.com 
+- Figma / Sonner
 
 ## 🛠️ Como rodar o projeto
 
