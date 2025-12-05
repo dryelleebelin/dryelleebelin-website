@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar.tsx";
 import About from "./sections/About..js";
 import Experience from "./sections/Experience.tsx";
 import Contact from "./sections/Contact.tsx";
+import Footer from "./sections/Footer.tsx";
 import DownloadCVButton from "./components/DownloadCVButton.tsx";
 import "./index.css";
 
@@ -23,6 +24,7 @@ export default function App() {
         <section id="about"><About /></section>
         <section id="experience"><Experience /></section>
         <section id="contact"><Contact /></section>
+        <Footer />
       </main>
 
       <CursorLight />
