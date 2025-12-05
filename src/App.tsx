@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar.tsx";
 import About from "./sections/About..js";
 import Experience from "./sections/Experience.tsx";
 import Contact from "./sections/Contact.tsx";
+import DownloadCVButton from "./components/DownloadCVButton.tsx";
 import "./index.css";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
       </main>
 
       <CursorLight />
+      <DownloadCVButton />
     </div>
   );
 }
