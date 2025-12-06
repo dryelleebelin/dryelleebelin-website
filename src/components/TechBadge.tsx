@@ -25,7 +25,7 @@ import responsividade from "../assets/tech/responsividade.png";
 import metodologia from "../assets/tech/metodologia.png";
 import type { TechBadge } from "../types/techBadge";
 
-export default function TechBadge({ label, color, bgColor }: TechBadge) {
+export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
   const techsIcons: Record<string, string> = {
     "React JS": react,
     "React Native": react,
@@ -58,15 +58,16 @@ export default function TechBadge({ label, color, bgColor }: TechBadge) {
   const icon = techsIcons[label];
 
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium ${color} ${bgColor}`}>
-      {icon && (
-        <img
-          src={icon}
-          className="h-5 w-5 object-contain"
-          alt={label}
-        />
-      )}
-      {label}
-    </span>
+    <a
+      href={url}
+      target="_blank"
+      className={`group inline-flex items-center rounded-full`}
+    >
+      <span className={`${color} ${bgColor} inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium border border-transparent transition-all duration-200 group-hover:border-current cursor-pointer`}>
+        {icon && <img src={icon} className="h-5 w-5 object-contain" alt={label} />}
+        {label}
+      </span>
+    </a>
+
   )
 }

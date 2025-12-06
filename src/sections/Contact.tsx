@@ -120,7 +120,7 @@ export default function Contact() {
         <button
           type="submit"
           disabled={loadingButton}
-          className="bg-indigo-900 rounded-sm h-9 w-40 md:w-46 text-sm font-semibold flex items-center justify-center hover:text-gray-300 hover:bg-indigo-800 transition-all shadow-md cursor-pointer disabled:cursor-not-allowed"
+          className="bg-indigo-800 rounded-sm h-9 w-40 md:w-46 text-sm font-semibold flex items-center justify-center hover:text-gray-300 hover:bg-indigo-700 transition-all shadow-md cursor-pointer disabled:cursor-not-allowed"
         >
           {loadingButton ? (
             <Loader2 className="animate-spin"/>
