@@ -5,3 +5,14 @@
 @theme {
   --font-inter: "Inter", sans-serif; 
 }
+
+::-webkit-scrollbar{
+  width: 10px;
+  background-color: oklch(25.7% 0.09 281.288);
+  border: none;
+}
+::-webkit-scrollbar-thumb{
+  background-color: oklch(70.7% 0.022 261.325);
+  border-radius: 50px;
+  height: 10vh;
+}
