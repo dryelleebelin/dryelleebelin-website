@@ -14,5 +14,4 @@
 ::-webkit-scrollbar-thumb{
   background-color: oklch(70.7% 0.022 261.325);
   border-radius: 50px;
-  height: 10vh;
 }

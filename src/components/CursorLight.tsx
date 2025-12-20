@@ -15,7 +15,7 @@ export default function CursorLight() {
     <div
       className="pointer-events-none fixed top-0 left-0 w-full h-full"
       style={{
-        background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.05), transparent 70%)`,
+        background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.05), transparent 80%)`,
         transition: "background 0.1s ease-out",
       }}
     />

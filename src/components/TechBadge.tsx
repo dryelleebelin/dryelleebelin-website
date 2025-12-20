@@ -61,6 +61,7 @@ export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
     <a
       href={url}
       target="_blank"
+      rel="noopener noreferrer"
       className={`group inline-flex items-center rounded-full`}
     >
       <span className={`${color} ${bgColor} inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium border border-transparent transition-all duration-200 group-hover:border-current cursor-pointer`}>
