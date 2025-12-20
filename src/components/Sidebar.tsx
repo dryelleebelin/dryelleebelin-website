@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import type { Section } from "../types/section";
 
 export default function Sidebar() {
-  const [active, setActive] = useState("about");
+  const [active, setActive] = useState<Section["id"]>("about");
 
-  const sections = [
+  const sections: Section[] = [
     { id: "about", label: "SOBRE" },
     { id: "skills", label: "HABILIDADES" },
     { id: "experience", label: "EXPERIÊNCIAS" },
@@ -42,7 +43,7 @@ export default function Sidebar() {
         <p>Transformo ideias em interfaces modernas, intuitivas e de alta performance.</p>
       </div>
 
-      <nav className="flex flex-col gap-3 hidden md:flex text-sm font-semibold">
+      <nav className="flex flex-col items-start gap-3 hidden md:flex text-sm font-semibold">
         {sections.map(({ id, label }) => {
           const isActive = active === id;
 
