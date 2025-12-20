@@ -6,6 +6,7 @@ export default function Footer() {
         href="https://code.visualstudio.com/"
         className="text-gray-200 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Visual Studio Code
       </a>
@@ -14,6 +15,7 @@ export default function Footer() {
         href="https://react.dev/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         React
       </a>
@@ -22,6 +24,7 @@ export default function Footer() {
         href="https://vite.dev/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Vite
       </a>{" "}
@@ -30,6 +33,7 @@ export default function Footer() {
         href="https://tailwindcss.com/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Tailwind CSS
       </a>
@@ -38,6 +42,7 @@ export default function Footer() {
         href="https://github.com/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         GitHub
       </a>{" "}
@@ -46,6 +51,7 @@ export default function Footer() {
         href="https://vercel.com/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Vercel
       </a>
@@ -54,6 +60,7 @@ export default function Footer() {
         href="https://rsms.me/inter/"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Inter
       </a>
@@ -63,6 +70,7 @@ export default function Footer() {
         href="https://github.com/dryelleebelin/dryelleebelin-website"
         className="text-gray-300 font-semibold hover:text-violet-400 transition-colors"
         target="_blank"
+        rel="noopener noreferrer"
       >
         repositório
       </a>

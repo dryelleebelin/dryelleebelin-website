@@ -1,4 +1,4 @@
 export type Section = {
-    id: "about" | "skills" | "experience" | "contact";
+    id: "about" | "techs" | "experiences" | "projects" | "contact";
     label: string;
 }

@@ -1,7 +1,8 @@
 import ExperienceItem from "../components/ExperienceItem";
+import type { Experience } from "../types/experience";
 
-export default function Experience() {
-  const experiences = [
+export default function Experiences() {
+  const experiences: Experience[] = [
     {
       year: "2024 - 2025",
       company: "NDEVS / PostallLOG",
@@ -36,7 +37,7 @@ export default function Experience() {
 
   return (
     <div className="py-10 px-6 md:px-18">
-      <h3 className="text-gray-300 font-bold block md:hidden">EXPERIÊNCIA</h3>
+      <h3 className="text-gray-300 font-bold block md:hidden">EXPERIÊNCIAS</h3>
 
       <div className="flex flex-col md:gap-6">
         {experiences.map((experience) => (

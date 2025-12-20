@@ -4,7 +4,8 @@ import CursorLight from "./components/CursorLight.tsx";
 import Sidebar from "./components/Sidebar.tsx";
 import About from "./sections/About..js";
 import Techs from "./sections/Techs.tsx";
-import Experience from "./sections/Experience.tsx";
+import Experiences from "./sections/Experiences.tsx";
+import Projects from "./sections/Projects.tsx";
 import Contact from "./sections/Contact.tsx";
 import Footer from "./sections/Footer.tsx";
 import DownloadCVButton from "./components/DownloadCVButton.tsx";
@@ -23,8 +24,9 @@ export default function App() {
 
       <main className="w-full md:w-3/5">
         <section id="about"><About /></section>
-        <section id="skills"><Techs/></section>
-        <section id="experience"><Experience /></section>
+        <section id="techs"><Techs/></section>
+        <section id="experiences"><Experiences /></section>
+        <section id="projects"><Projects /></section>
         <section id="contact"><Contact /></section>
         <Footer />
       </main>

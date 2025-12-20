@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
-import cv from "../../public/CurriculoDryelleEbelin.pdf";
 
 export default function DownloadCVButton() {
   const [show, setShow] = useState(false);
@@ -24,7 +23,7 @@ export default function DownloadCVButton() {
 
   return (
     <a
-      href={cv}
+      href="/CurriculoDryelleEbelin.pdf"
       className={`
         fixed bottom-5 right-5 p-3 rounded-full shadow-xl bg-indigo-900 text-white
         transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-indigo-700
