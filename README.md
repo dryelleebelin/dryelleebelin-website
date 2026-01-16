@@ -10,8 +10,6 @@
   Projeto pessoal, desenvolvido para apresentar minhas habilidades, experiências e projetos na área de desenvolvimento front-end.
 </p>
 
-> 🚧 Em desenvolvimento — novas seções e animações estão sendo implementadas. 
-
 ## 🚀 Tecnologias
 - React + Vite  
 - Tailwind CSS / Lucide React
