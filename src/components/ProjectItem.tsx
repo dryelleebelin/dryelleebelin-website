@@ -13,8 +13,8 @@ export default function ProjectItem({ title, description, year, thumbnail, techs
         <div className='flex flex-col gap-2 md:pt-1'>
           <span className="text-xs font-semibold">{year}</span>
 
-          {status === "in-progress" && (
-            <span className="text-xs font-semibold">Em progresso</span>
+          {status === "in-development" && (
+            <span className="text-xs font-semibold">Em desenvolvimento</span>
           )}
         </div>
 
