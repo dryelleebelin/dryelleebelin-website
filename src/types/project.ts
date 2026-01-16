@@ -8,5 +8,5 @@ export type Project = {
   liveUrl: string;
   repoUrl: string;
   type?: "personal" | "professional" | "academic";
-  status?: "completed" | "in-progress";
+  status?: "completed" | "in-development";
 };

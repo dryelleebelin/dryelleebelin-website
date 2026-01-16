@@ -11,11 +11,11 @@ export default function Projects() {
       description: "Landing page moderna e responsiva para apresentação de um projeto NFT, com foco em performance, design profissional e boas práticas de front-end.",
       year: 2025,
       thumbnail: thumbnailNft,
-      techs: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+      techs: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion"],
       liveUrl: "https://nft-landing-ui.vercel.app/",
       repoUrl: "https://github.com/dryelleebelin/nft-landing-page",
       type: "personal",
-      status: "in-progress",
+      status: "completed",
     },
   ];
 
@@ -31,6 +31,10 @@ export default function Projects() {
           />
         ))}
       </div>
+
+      <p className="pl-4 mt-6 text-sm italic">
+        Novos projetos estão em desenvolvimento e serão adicionados em breve.
+      </p>
     </div>
   );
 }
