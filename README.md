@@ -39,4 +39,6 @@ npm run dev
 
 O portfólio foi projetado para ser moderno, responsivo e minimalista, destacando minha trajetória profissional e projetos desenvolvidos. O foco está em uma boa experiência do usuário, transições suaves e código limpo.
 
+- Monitoramento de acessos e métricas de performance com Vercel Analytics.
+
 🌐 O site está publicado online com **deploy automático configurado via Vercel**: [Acesse aqui](https://dryelleebelin.vercel.app)
