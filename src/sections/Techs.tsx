@@ -16,6 +16,7 @@ export default function Techs() {
     { label: "Node.js", color: "text-green-400", bgColor: "bg-green-400/20", url: "https://nodejs.org" },
     { label: "Integração com APIs RESTful", color: "text-pink-400", bgColor: "bg-pink-500/20", url: "https://restfulapi.net" },
     { label: "Firebase", color: "text-amber-400", bgColor: "bg-amber-400/20", url: "https://firebase.google.com" },
+    { label: "AWS", color: "text-amber-400", bgColor: "bg-amber-400/15", url: "https://aws.amazon.com/amplify/" },
     { label: "C#", color: "text-gray-300", bgColor: "bg-gray-500/50", url: "https://learn.microsoft.com/dotnet/csharp" },
     { label: "Banco de Dados SQL", color: "text-cyan-300", bgColor: "bg-cyan-300/20", url: "https://www.microsoft.com/pt-br/sql-server/sql-server-downloads" },
     { label: "Python", color: "text-yellow-300", bgColor: "bg-yellow-300/20", url: "https://www.python.org" },

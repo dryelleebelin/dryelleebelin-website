@@ -9,4 +9,6 @@ export type Experience = {
     extraLinkLabel?: string;
     extraLink2?: string;
     extraLinkLabel2?: string;
+    extraLink3?: string;
+    extraLinkLabel3?: string;
 }
