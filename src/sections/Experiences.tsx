@@ -18,7 +18,6 @@ export default function Experiences() {
         "REST APIs",
         "Git",
         "AWS",
-        "Figma"
       ],
       link: "https://www.greens-corp.com/",
       extraLink: "https://www.greens-corp.com/",
