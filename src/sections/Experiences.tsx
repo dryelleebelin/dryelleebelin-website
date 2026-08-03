@@ -24,8 +24,8 @@ export default function Experiences() {
       extraLinkLabel: "Greens Corp",
       extraLink2: "https://be4hope.org/",
       extraLinkLabel2: "Be4Hope",
-      extraLink3: "https://main.d3b3n6yslmbdf5.amplifyapp.com/",
-      extraLinkLabel3: "Portal Corporativo",
+      extraLink3: "https://sistemagreens.com/",
+      extraLinkLabel3: "Portal Corporativo (Acesso restrito)",
     },
     {
       year: "2024 - 2025",
