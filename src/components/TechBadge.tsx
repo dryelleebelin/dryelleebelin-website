@@ -23,6 +23,7 @@ import figma from "../assets/tech/figma.svg";
 import uiux from "../assets/tech/uiux.png";
 import responsividade from "../assets/tech/responsividade.png";
 import metodologia from "../assets/tech/metodologia.png";
+import aws from "../assets/tech/aws.png";
 import type { TechBadge } from "../types/techBadge";
 
 export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
@@ -41,6 +42,7 @@ export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
     "Node.js": node,
     "Integração com APIs RESTful": api,
     "Firebase": firebase,
+    "AWS": aws,
     "C#": csharp,
     "Banco de Dados SQL": sql,
     "Python": python,

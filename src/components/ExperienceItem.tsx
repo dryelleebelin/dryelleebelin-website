@@ -40,6 +40,17 @@ export default function ExperienceItem(props: Experience) {
               {props.extraLinkLabel2}
             </a>
           )}
+          {props.extraLink3 && props.extraLinkLabel3 && (
+            <a
+              href={props.extraLink3}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold hover:underline flex items-center gap-1"
+            >
+              <Link size={12} />
+              {props.extraLinkLabel3}
+            </a>
+          )}
         </div>
 
         <ul className="flex flex-wrap gap-2 mt-2">

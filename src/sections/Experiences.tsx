@@ -4,6 +4,30 @@ import type { Experience } from "../types/experience";
 export default function Experiences() {
   const experiences: Experience[] = [
     {
+      year: "2026 - Atual",
+      company: "Greens Pharmaceutical Corp",
+      role: "Desenvolvedora Front-end Pleno",
+      description:
+        "Atuação no desenvolvimento de aplicações web utilizando React, Next.js e TypeScript, criando interfaces responsivas, implementando novas funcionalidades, integrando APIs, corrigindo bugs e realizando melhorias contínuas de performance e usabilidade. Participação em definições técnicas, testes, validação de entregas e manutenção evolutiva dos sistemas da empresa.",
+      techs: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+        "REST APIs",
+        "Git",
+        "AWS",
+      ],
+      link: "https://www.greens-corp.com/",
+      extraLink: "https://www.greens-corp.com/",
+      extraLinkLabel: "Greens Corp",
+      extraLink2: "https://be4hope.org/",
+      extraLinkLabel2: "Be4Hope",
+      extraLink3: "https://sistemagreens.com/",
+      extraLinkLabel3: "Portal Corporativo (Acesso restrito)",
+    },
+    {
       year: "2024 - 2025",
       company: "NDEVS / PostallLOG",
       role: "Desenvolvedora Front-end Mobile",
