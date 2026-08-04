@@ -1,134 +1,209 @@
-import { useState } from "react";
-import { api } from "../utils/api";
+import { useId, useState } from "react";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { api } from "../utils/api";
+import SectionHeading from "../components/SectionHeading";
+import { useLanguage } from "../i18n/LanguageContext";
+import { t } from "../i18n/translations";
+
+const MAX_RETRIES = 2;
+const RETRY_DELAY_MS = 2500;
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 export default function Contact() {
+  const { t: tr } = useLanguage();
+  const nameId = useId();
+  const emailId = useId();
+  const subjectId = useId();
+  const messageId = useId();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [loadingButton, setLoadingButton] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function isValidEmail(email: string) {
-    return /\S+@\S+\.\S+/.test(email);
+  async function submitPayload(retriesLeft: number): Promise<void> {
+    try {
+      const response = await api.post("/contact", {
+        name,
+        email,
+        subject,
+        message,
+      });
+
+      if (response.status === 200 || response.data?.success === true) {
+        toast.success(tr(t.contact.toasts.success));
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      } else {
+        toast.error(tr(t.contact.toasts.errorGeneric));
+      }
+    } catch (err) {
+      const anyErr = err as {
+        response?: unknown;
+        request?: unknown;
+      };
+
+      if (anyErr.response) {
+        toast.error(tr(t.contact.toasts.errorRequest));
+        return;
+      }
+
+      if (anyErr.request && retriesLeft > 0) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+        return submitPayload(retriesLeft - 1);
+      }
+
+      toast.error(tr(t.contact.toasts.errorNetwork));
+    }
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (!name || !email || !subject || !message) {
-      toast.warning("Preencha todos os campos.");
+      toast.warning(tr(t.contact.validation.allFields));
       return;
     }
 
-    if(!isValidEmail(email)){
-      toast.warning("Digite um e-mail válido.");
+    if (!isValidEmail(email)) {
+      toast.warning(tr(t.contact.validation.invalidEmail));
       return;
     }
 
+    setLoading(true);
     try {
-      setLoadingButton(true);
-
-      const response = await api.post("/contact", {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message
-      });
-
-      console.log(response.data)
-
-      if (response.status === 200 || response.data.success === true) {
-        toast.success("Mensagem enviada com sucesso!");
-
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-      }
-
-    } catch (err: any) {
-      if (err.response) {
-        toast.error("Erro na solicitação.");
-      }
-      else if (err.request) {
-        //cold start - resend free
-        setTimeout(() => handleSubmit(e), 1500);
-        return;
-      }
-      else {
-        toast.error("Erro inesperado ao enviar a mensagem.");
-      }
-
+      await submitPayload(MAX_RETRIES);
     } finally {
-      setLoadingButton(false);
+      setLoading(false);
     }
   }
 
   return (
-    <div className="py-12 md:py-20 px-6 md:px-22 flex flex-col gap-4">
-      <h3 className="text-gray-300 font-bold text-xl md:text-2xl">Entre em contato</h3>
+    <div className="py-16 md:py-24 px-6 md:px-10 lg:px-12 flex flex-col gap-6">
+      <SectionHeading
+        eyebrow="07"
+        title={tr(t.headings.contact)}
+        id="contact-heading"
+      />
 
-      <form className="space-y-5" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row w-full gap-6 md:gap-4">
+      <p className="text-sm md:text-base leading-relaxed max-w-2xl">
+        {tr(t.contact.intro)}{" "}
+        <a
+          href="https://www.linkedin.com/in/dryelleebelin"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-gray-200 hover:text-violet-400 transition-colors underline underline-offset-4 decoration-violet-400/40"
+        >
+          LinkedIn
+        </a>
+        .
+      </p>
+
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
+        <div className="flex flex-col md:flex-row w-full gap-5 md:gap-4">
           <div className="w-full md:w-1/2 flex flex-col gap-2">
-            <label className="font-medium">Nome:</label>
+            <label htmlFor={nameId} className="text-sm font-medium text-gray-300">
+              {tr(t.contact.fields.name)}
+            </label>
             <input
+              id={nameId}
+              name="name"
               type="text"
+              autoComplete="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-white/9 rounded-sm border border-white/10 p-2 text-gray-300 text-sm focus:border-violet-400 outline-none transition-all"
-              placeholder="Digite seu nome"
+              className="w-full bg-white/5 rounded-md border border-white/10 p-2.5 text-gray-100 text-sm placeholder:text-gray-500 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/40 transition-all"
+              placeholder={tr(t.contact.placeholders.name)}
               maxLength={50}
+              required
             />
           </div>
 
           <div className="w-full md:w-1/2 flex flex-col gap-2">
-            <label className="font-medium">E-mail:</label>
+            <label
+              htmlFor={emailId}
+              className="text-sm font-medium text-gray-300"
+            >
+              {tr(t.contact.fields.email)}
+            </label>
             <input
-              type="text"
+              id={emailId}
+              name="email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-white/9 rounded-sm border border-white/10 p-2 text-gray-300 text-sm focus:border-violet-400 outline-none transition-all"
-              placeholder="Digite seu e-mail"
+              className="w-full bg-white/5 rounded-md border border-white/10 p-2.5 text-gray-100 text-sm placeholder:text-gray-500 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/40 transition-all"
+              placeholder={tr(t.contact.placeholders.email)}
+              required
             />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="font-medium">Assunto:</label>
+          <label
+            htmlFor={subjectId}
+            className="text-sm font-medium text-gray-300"
+          >
+            {tr(t.contact.fields.subject)}
+          </label>
           <input
+            id={subjectId}
+            name="subject"
             type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full bg-white/9 rounded-sm border border-white/10 p-2 text-gray-300 text-sm focus:border-violet-400 outline-none transition-all"
-            placeholder="Assunto da mensagem"
+            className="w-full bg-white/5 rounded-md border border-white/10 p-2.5 text-gray-100 text-sm placeholder:text-gray-500 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/40 transition-all"
+            placeholder={tr(t.contact.placeholders.subject)}
             maxLength={80}
+            required
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="font-medium">Mensagem:</label>
+          <label
+            htmlFor={messageId}
+            className="text-sm font-medium text-gray-300"
+          >
+            {tr(t.contact.fields.message)}
+          </label>
           <textarea
+            id={messageId}
+            name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full bg-white/9 md:h-40 h-56 rounded-sm border border-white/10 p-2 text-gray-300 text-sm focus:border-violet-400 outline-none transition-all"
-            placeholder="Digite sua mensagem..." />
+            className="w-full min-h-40 md:min-h-36 bg-white/5 rounded-md border border-white/10 p-2.5 text-gray-100 text-sm placeholder:text-gray-500 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/40 transition-all resize-y"
+            placeholder={tr(t.contact.placeholders.message)}
+            required
+          />
         </div>
 
         <button
           type="submit"
-          disabled={loadingButton}
-          className="bg-indigo-800 rounded-sm h-9 w-40 md:w-46 text-sm font-semibold flex items-center justify-center hover:text-gray-300 hover:bg-indigo-700 transition-all shadow-md cursor-pointer disabled:cursor-not-allowed"
+          disabled={loading}
+          className="inline-flex items-center justify-center gap-2 bg-indigo-800 rounded-md h-10 px-5 min-w-44 text-sm font-semibold text-white hover:bg-indigo-700 transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {loadingButton ? (
-            <Loader2 className="animate-spin"/>
+          {loading ? (
+            <>
+              <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+              {tr(t.contact.sending)}
+            </>
           ) : (
-            "Enviar mensagem"
+            <>
+              <Send size={16} aria-hidden="true" />
+              {tr(t.contact.submit)}
+            </>
           )}
         </button>
       </form>
     </div>
-  )
+  );
 }

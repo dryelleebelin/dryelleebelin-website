@@ -24,39 +24,44 @@ import uiux from "../assets/tech/uiux.png";
 import responsividade from "../assets/tech/responsividade.png";
 import metodologia from "../assets/tech/metodologia.png";
 import aws from "../assets/tech/aws.png";
-import type { TechBadge } from "../types/techBadge";
+import type { TechBadge as TechBadgeType } from "../types/techBadge";
 
-export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
-  const techsIcons: Record<string, string> = {
-    "React JS": react,
-    "React Native": react,
-    "Next.js": next,
-    "JavaScript": javascript,
-    "TypeScript": typescript,
-    "HTML": html,
-    "CSS": css,
-    "Sass/SCSS": sass,
-    "Tailwind CSS": tailwind,
-    "Bootstrap": bootstrap,
-    "Vite": vite,
-    "Node.js": node,
-    "Integração com APIs RESTful": api,
-    "Firebase": firebase,
-    "AWS": aws,
-    "C#": csharp,
-    "Banco de Dados SQL": sql,
-    "Python": python,
-    "Jest": jest,
-    "Git": git,
-    "CI/CD": cicd,
-    "Docker": docker,
-    "Vercel": vercel,
-    "Figma": figma,
-    "Princípios de UI/UX": uiux,
-    "Design responsivo": responsividade,
-    "Metodologias Ágeis": metodologia,
-  };
+const techsIcons: Record<string, string> = {
+  "React JS": react,
+  "React Native": react,
+  "Next.js": next,
+  JavaScript: javascript,
+  TypeScript: typescript,
+  HTML: html,
+  CSS: css,
+  "Sass/SCSS": sass,
+  "Tailwind CSS": tailwind,
+  Bootstrap: bootstrap,
+  Vite: vite,
+  "Node.js": node,
+  "Integração com APIs RESTful": api,
+  Firebase: firebase,
+  AWS: aws,
+  "C#": csharp,
+  "Banco de Dados SQL": sql,
+  Python: python,
+  Jest: jest,
+  Git: git,
+  "CI/CD": cicd,
+  Docker: docker,
+  Vercel: vercel,
+  Figma: figma,
+  "Princípios de UI/UX": uiux,
+  "Design responsivo": responsividade,
+  "Metodologias Ágeis": metodologia,
+};
 
+export default function TechBadge({
+  label,
+  color,
+  bgColor,
+  url,
+}: TechBadgeType) {
   const icon = techsIcons[label];
 
   return (
@@ -64,13 +69,25 @@ export default function TechBadge({ label, color, bgColor, url }: TechBadge) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center rounded-full`}
+      aria-label={`Documentação de ${label}`}
+      className="group inline-flex items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-950"
     >
-      <span className={`${color} ${bgColor} inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium border border-transparent transition-all duration-200 group-hover:border-current cursor-pointer`}>
-        {icon && <img src={icon} className="h-5 w-5 object-contain" alt={label} />}
+      <span
+        className={`${color} ${bgColor} inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium border border-transparent transition-all duration-200 group-hover:border-current`}
+      >
+        {icon && (
+          <img
+            src={icon}
+            alt=""
+            aria-hidden="true"
+            width={20}
+            height={20}
+            className="h-4 w-4 object-contain"
+            loading="lazy"
+          />
+        )}
         {label}
       </span>
     </a>
-
-  )
+  );
 }

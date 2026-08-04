@@ -12,12 +12,9 @@
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
     "axios": "^1.13.2",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.23.24",
     "lucide-react": "^0.553.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.5",
     "sonner": "^2.0.7"
   },
   "devDependencies": {
