@@ -1,14 +1,18 @@
+import type { Localized } from "../i18n/types";
+
+export type ExperienceLink = {
+  label: Localized<string>;
+  url: string;
+  restricted?: boolean;
+};
+
 export type Experience = {
-    year: string;
-    company: string;
-    role: string;
-    description: string;
-    techs: string[];
-    link: string;
-    extraLink?: string;
-    extraLinkLabel?: string;
-    extraLink2?: string;
-    extraLinkLabel2?: string;
-    extraLink3?: string;
-    extraLinkLabel3?: string;
-}
+  year: Localized<string>;
+  company: string;
+  role: Localized<string>;
+  description: Localized<string>;
+  highlights?: Localized<string[]>;
+  techs: string[];
+  link: string;
+  extraLinks?: ExperienceLink[];
+};

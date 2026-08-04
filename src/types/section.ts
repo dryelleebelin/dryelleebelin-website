@@ -1,4 +1,14 @@
+import type { Localized } from "../i18n/types";
+
+export type SectionId =
+  | "about"
+  | "techs"
+  | "experiences"
+  | "projects"
+  | "education"
+  | "contact";
+
 export type Section = {
-    id: "about" | "techs" | "experiences" | "projects" | "contact";
-    label: string;
-}
+  id: SectionId;
+  label: Localized<string>;
+};

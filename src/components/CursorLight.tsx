@@ -1,22 +1,52 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function CursorLight() {
-  const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) =>
-      setMousePos({ x: e.clientX, y: e.clientY });
+    const el = ref.current;
+    if (!el) return;
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReducedMotion || isCoarsePointer) return;
+
+    let rafId = 0;
+    let nextX = 0;
+    let nextY = 0;
+    let scheduled = false;
+
+    function handleMouseMove(e: MouseEvent) {
+      nextX = e.clientX;
+      nextY = e.clientY;
+      if (scheduled) return;
+      scheduled = true;
+      rafId = window.requestAnimationFrame(() => {
+        if (el) {
+          el.style.setProperty("--x", `${nextX}px`);
+          el.style.setProperty("--y", `${nextY}px`);
+        }
+        scheduled = false;
+      });
+    }
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
     <div
-      className="pointer-events-none fixed top-0 left-0 w-full h-full"
+      ref={ref}
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 hidden md:block"
       style={{
-        background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.05), transparent 80%)`,
-        transition: "background 0.1s ease-out",
+        background:
+          "radial-gradient(circle 500px at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.04), transparent 80%)",
       }}
     />
   );

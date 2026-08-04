@@ -1,40 +1,43 @@
+import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "../components/SectionHeading";
 import ProjectItem from "../components/ProjectItem";
-import type { Project } from "../types/project";
-
-import thumbnailNft from "../assets/thumbnails/thumbnail-nft-landing-page.png";
+import { projects } from "../data/projects";
+import { useLanguage } from "../i18n/LanguageContext";
+import { t } from "../i18n/translations";
 
 export default function Projects() {
-  const projects: Project[] = [
-    {
-      id: "nft-landing-page",
-      title: "Landing Page NFT",
-      description: "Landing page moderna e responsiva para apresentação de um projeto NFT, com foco em performance, design profissional e boas práticas de front-end.",
-      year: 2025,
-      thumbnail: thumbnailNft,
-      techs: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion"],
-      liveUrl: "https://nft-landing-ui.vercel.app/",
-      repoUrl: "https://github.com/dryelleebelin/nft-landing-page",
-      type: "personal",
-      status: "completed",
-    },
-  ];
+  const { t: tr } = useLanguage();
 
   return (
-    <div className="py-10 px-6 md:px-18">
-      <h3 className="text-gray-300 font-bold block md:hidden">PROJETOS</h3>
+    <div className="py-16 md:py-24 px-6 md:px-6 lg:px-8">
+      <div className="px-0 md:px-4">
+        <SectionHeading
+          eyebrow="04"
+          title={tr(t.headings.projects)}
+          id="projects-heading"
+        />
+      </div>
 
-      <div className="flex flex-col md:gap-6">
+      <div className="flex flex-col md:gap-4">
         {projects.map((project) => (
-          <ProjectItem
-            key={project.id}
-            {...project}
-          />
+          <ProjectItem key={project.id} {...project} />
         ))}
       </div>
 
-      <p className="pl-4 mt-6 text-sm italic">
-        Novos projetos estão em desenvolvimento e serão adicionados em breve.
-      </p>
+      <div className="px-0 md:px-4 mt-8 rounded-lg border border-dashed border-white/10 bg-white/[0.02] p-4 text-sm text-gray-400">
+        <p className="mb-2">{tr(t.projects.empty)}</p>
+        <a
+          href="https://github.com/dryelleebelin"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-sm font-semibold text-gray-300 hover:text-violet-400 transition-colors focus:outline-none focus-visible:text-violet-400"
+        >
+          <span className="hover:underline underline-offset-4">
+            {tr(t.projects.moreOnGithub)}
+          </span>
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
     </div>
   );
 }
